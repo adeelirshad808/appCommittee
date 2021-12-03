@@ -1,0 +1,18 @@
+{% extends 'app/authentication/base.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+{{payment_status}}
+<p>Congratulations, You have successfully created your Committee. </p>
+    <form action="" method="POST" >
+        {% csrf_token %}
+        {{committeeJoinForm.as_p}}
+<button type="submit">Create</button>
+    </form>
+
+
+{% else %}
+    not authenticated login first
+{% endif %}
+
+{% endblock %}

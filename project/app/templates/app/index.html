@@ -1,0 +1,48 @@
+{% extends 'app/authentication/base.html' %}
+
+{% block content %}
+            {% comment %} {% if user.is_authenticated %}  
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">           
+              <h3>Create a Committe</h3>
+              <span  class="text-primary"> Sarmaaya will always be default member in every Committee.</span><br>
+              <span><small class="text-warning">First withdrawl will always goes to Sarmaaya!</small></span>
+
+                  <form  method="POST">
+                       {% csrf_token %}
+                        {{committee_form.as_p}}
+                        <input type="submit">
+                        <small id="date"><br>Today's Date is {{current_date}}</small>
+                        <small id="date">Your Committe will start from first of next month </small>
+    
+                  </form>
+                </div>
+              </div>
+            </div>
+                  {% else %}
+             <h3> Register or login from navbar</h3>
+                {% endif %}
+                       
+
+                <script>
+                  /*$(function () {
+                    $("#id_committee_starting_date").datetimepicker();
+                  });*/
+
+                 
+                </script> {% endcomment %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+    {% if user.is_authenticated %}
+      <h4>Welcome <span><small>{{request.user.username}}</small></span> </h4>
+     <button> <a href="{% url 'create_committee' %}">Create Committee</a></button>
+      {% else %}
+      Not authorized, Login first
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

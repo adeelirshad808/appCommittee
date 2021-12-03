@@ -1,0 +1,16 @@
+{% extends 'app/authentication/base.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    <form action="" method="POST" >
+        {% csrf_token %}
+        {{committee_creation_form.as_p}}
+<button type="submit">Create</button>
+    </form>
+
+
+{% else %}
+not authenticated login first
+{% endif %}
+
+{% endblock %}
